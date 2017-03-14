@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster|Raleway');
+
+/*font-family: 'Raleway', sans-serif;
+font-family: 'Lobster', cursive;*/
+
+h1 {
+  font-family: 'Lobster', cursive;
+  text-decoration-color: #FFFFFF;
+}
+
+p {
+  font-family: 'Raleway', sans-serif;
+}
+
+h2 {
+  font-family: 'Raleway', sans-serif;
+}
+body {
+  font-family: 'Raleway', sans-serif;
+  background-color: #02ABE3;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+button {
+  background: none;
+  border: none;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12pt;
+  margin: inherit;
+  padding: inherit;
+}
+textarea {
+  font-family: 'Orbitron', sans-serif;
+}
