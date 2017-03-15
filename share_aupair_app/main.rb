@@ -37,15 +37,9 @@ def run_sql(sql)
 end
 
 get '/' do
+  @clients = Client.all
+  @carers = Carer.all
   erb :index
-end
-
-get '/clients' do
-  erb :client
-end
-
-get '/carers' do
-  erb :carer
 end
 
 get  '/session/new' do
@@ -53,8 +47,17 @@ get  '/session/new' do
 end
 
 get '/show' do
-  erb :shows
+
 end
+
+post '/show' do
+  if
+    client_logged_in? == true
+    erb :client
+    if carer_logged_in? == true
+      erb :carer
+    end
+  end
 
 post '/session/new' do
   user = Client.find_by(email: params[:email])
@@ -84,10 +87,8 @@ post '/signup/signup_client' do
   client.name = params[:name]
   client.email = params[:email]
   client.mobile_number = params[:mobile_number]
-  client.password = nil
-  client.password_digest # => nil
   client.password = params[:password]
-  client.password_digest #
+  # client.password_digest #
   client.save
 end
 
@@ -100,9 +101,12 @@ post '/signup/signup_carer' do
   carer.name = params[:name]
   carer.email = params[:email]
   carer.mobile_number = params[:mobile_number]
-  carer.password = nil
-  carer.password_digest # => nil
   carer.password = params[:password]
   carer.password_digest
-  carer.save 
+  carer.save
+end
+
+post '/client' do
+
+end
 end
