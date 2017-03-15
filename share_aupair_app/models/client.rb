@@ -1,4 +1,4 @@
 class Client < ActiveRecord::Base
-  has_secure_password
+  has_secure_password validations false  
   belongs_to :locations
 end

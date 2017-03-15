@@ -23,7 +23,7 @@ helpers do
     Carer.find_by(id: session[:user_id])
   end
 
-  def client_logged_in?
+  def carer_logged_in?
      !!current_carer #double negative = positve
   end
 
@@ -52,6 +52,9 @@ get  '/session/new' do
   erb :login
 end
 
+get '/show' do
+  erb :shows
+end
 
 post '/session/new' do
   user = Client.find_by(email: params[:email])
@@ -61,7 +64,7 @@ post '/session/new' do
   if user && user.authenticate(params[:password])
     #create a session for you
     session[:user_id] = user.id
-    redirect '/'
+    redirect '/show'
   else
     #get off my lawn! -- who are you?
     erb :login
@@ -81,7 +84,11 @@ post '/signup/signup_client' do
   client.name = params[:name]
   client.email = params[:email]
   client.mobile_number = params[:mobile_number]
+  client.password = nil
+  client.password_digest # => nil
   client.password = params[:password]
+  client.password_digest #
+  client.save
 end
 
 get '/signup/signup_carer' do
@@ -93,5 +100,9 @@ post '/signup/signup_carer' do
   carer.name = params[:name]
   carer.email = params[:email]
   carer.mobile_number = params[:mobile_number]
+  carer.password = nil
+  carer.password_digest # => nil
   carer.password = params[:password]
+  carer.password_digest
+  carer.save 
 end

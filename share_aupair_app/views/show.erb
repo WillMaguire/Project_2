@@ -16,3 +16,10 @@
 
     <label name="">ADDRESS</label>
     <input name="street_address" type="text"> -->
+
+<!-- TO BE USED FOR SELETING PROFILE TO DISPLAY
+post '/session/new' do
+  user = Client.find_by(email: params[:email])
+  if (!user)
+    user = Carer.find_by(email: params[:email])
+  end -->
