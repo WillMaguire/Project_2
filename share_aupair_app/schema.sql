@@ -5,7 +5,9 @@ CREATE TABLE clients (
   mobile_number VARCHAR(10) NOT NULL,
   img_url TEXT,
   children VARCHAR(600) NOT NULL,
+  children_age INTEGER NOT NULL,
   street_address VARCHAR(1000) NOT NULL,
+  suburb VARCHAR(100) NOT NULL,
   host BOOLEAN NOT NULL
 );
 
@@ -17,7 +19,7 @@ CREATE TABLE carers (
   img_url TEXT NOT NULL,
   age INTEGER NOT NULL,
   street_address VARCHAR(1000) NOT NULL,
-  blue_card BOOLEAN NOT NULL
+  blue_card BOOLEAN NOT NULL  
 );
 
 CREATE TABLE locations (

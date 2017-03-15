@@ -41,11 +41,11 @@ get '/' do
 end
 
 get '/clients' do
-
+  erb :client
 end
 
 get '/carers' do
-
+  erb :carer
 end
 
 get  '/session/new' do
@@ -70,4 +70,28 @@ end
 
 get '/signup' do
    erb :signup
+end
+
+get '/signup/signup_client' do
+  erb :signup_client
+end
+
+post '/signup/signup_client' do
+  client = Client.new
+  client.name = params[:name]
+  client.email = params[:email]
+  client.mobile_number = params[:mobile_number]
+  client.password = params[:password]
+end
+
+get '/signup/signup_carer' do
+  erb :signup_carer
+end
+
+post '/signup/signup_carer' do
+  carer = Carer.new
+  carer.name = params[:name]
+  carer.email = params[:email]
+  carer.mobile_number = params[:mobile_number]
+  carer.password = params[:password]
 end
