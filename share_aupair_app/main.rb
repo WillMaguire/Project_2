@@ -40,10 +40,6 @@ get '/' do
   erb :index
 end
 
-get  '/session/new' do
-  erb :login
-end
-
 get '/clients' do
 
 end
@@ -51,6 +47,11 @@ end
 get '/carers' do
 
 end
+
+get  '/session/new' do
+  erb :login
+end
+
 
 post '/session/new' do
   user = Client.find_by(email: params[:email])
@@ -65,4 +66,8 @@ post '/session/new' do
     #get off my lawn! -- who are you?
     erb :login
   end
+end
+
+get '/signup' do
+   erb :signup
 end
