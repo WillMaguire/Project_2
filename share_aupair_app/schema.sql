@@ -10,10 +10,12 @@ CREATE TABLE clients (
   children_age_2to3 BOOLEAN,
   children_age_4to5 BOOLEAN,
   children_age_6to8 BOOLEAN,
-  children_age_9to12 BOOLEAN,
+  children_age_9to11 BOOLEAN,
   children_age_12plus BOOLEAN,
   street_address VARCHAR(1000),
   suburb VARCHAR(100),
+  postcode VARCHAR(4),
+  region VARCHAR(100),
   bio VARCHAR(5000),
   host BOOLEAN
 );
@@ -28,11 +30,13 @@ CREATE TABLE carers (
   age INTEGER,
   street_address VARCHAR(1000),
   suburb VARCHAR(100),
+  postcode VARCHAR(4),
+  region VARCHAR(100),
   children_age_0to1 BOOLEAN,
   children_age_2to3 BOOLEAN,
   children_age_4to5 BOOLEAN,
   children_age_6to8 BOOLEAN,
-  children_age_9to12 BOOLEAN,
+  children_age_9to11 BOOLEAN,
   children_age_12plus BOOLEAN,
   bio VARCHAR(5000),
   blue_card BOOLEAN

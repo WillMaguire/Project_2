@@ -10,8 +10,9 @@
   <h2>Childcare the works for you</h2>
 
   <% if client_logged_in?%>
-    LOGGED IN AS <%=current_client.email%>
-
+    LOGGED IN AS <%=current_client.name%>
+      <a href="/client">Profile</a>
+      <a href="/">Home</a>
       <form class="" action="/session" method="post">
         <input type="hidden" name="_method" value="delete">
         <button>LOG OUT</button>
@@ -19,8 +20,9 @@
     <%end%>
 
   <% if carer_logged_in?%>
-    LOGGED IN AS <%=current_carer.email%>
-
+    LOGGED IN AS <%=current_carer.name%>
+      <a href="/carer">Profile</a>
+      <a href="/">Home</a>
       <form class="" action="/session" method="post">
         <input type="hidden" name="_method" value="delete">
         <button>LOG OUT</button>

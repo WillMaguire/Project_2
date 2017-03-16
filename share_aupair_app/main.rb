@@ -38,6 +38,7 @@ end
 get '/' do
   @clients = Client.all
   @carers = Carer.all
+  @locations = Location.all
   erb :index
 end
 
@@ -50,18 +51,13 @@ get '/show' do
 end
 
 get '/client' do
+  # return current_client.to_json
   erb :client
 end
 
 
-post '/show' do
-  if
-    client_logged_in?
-    erb :client
-  if carer_logged_in?
-      erb :carer
-    end
-  end
+get '/carer' do
+  erb :carer
 end
 
 delete '/session' do
@@ -79,10 +75,10 @@ post '/session/new' do
     #create a session for you
     if user.class.to_s == "Client"
     session[:client_id] = user.id
+    redirect '/client'
   else session[:carer_id] = user.id
-    redirect '/show'
+    redirect '/carer'
   end
-
   else
     #get off my lawn! -- who are you?
     erb :login
@@ -98,26 +94,41 @@ get '/signup/signup_client' do
 end
 
 post '/signup/signup_client' do
-  if session[:client_id] || session[:carer_id]  == true
-    redirect '/show'
-    else
-      client = Client.new
-      client.name = params[:name]
-      client.email = params[:email]
-      client.mobile_number = params[:mobile_number]
-      client.password = params[:password]
-      # client.password_digest #
-      client.save
-      redirect '/show'
+    client = Client.new
+    client.name = params[:name]
+    client.email = params[:email]
+    client.mobile_number = params[:mobile_number]
+    client.password = params[:password]
+    # client.password_digest #
+    client.save
+    redirect '/client'
+end
+
+get '/client_edit' do
+  @client = current_client
+  erb :client_edit
+end
+
+post '/client_edit' do
+  client = current_client
+  client.name = params[:name]
+  client.email = params[:email]
+  client.mobile_number = params[:mobile_number]
+  if Location.where(suburb: params[:suburb].upcase).exists?
+    client.suburb = params[:suburb]
   end
-end
-
-get '/cliet_edit' do
-  erb :cliet_edit
-end
-
-post 'client_edit' do
-  
+  client.img_url = params[:img_url]
+  client.bio = params[:bio]
+  client.host = params[:host].to_i
+  client.children = params[:children]
+  client.children_age_0to1 = params[:children_age_0to1].to_i
+  client.children_age_2to3 = params[:children_age_2to3].to_i
+  client.children_age_4to5 = params[:children_age_4to5].to_i
+  client.children_age_6to8 = params[:children_age_6to8].to_i
+  client.children_age_9to12 = params[:children_age_9to12].to_i
+  client.children_age_12plus = params[:children_age_12plus].to_i
+  client.save
+   redirect '/client'
 end
 
 get '/signup/signup_carer' do
@@ -134,10 +145,6 @@ post '/signup/signup_carer' do
       carer.mobile_number = params[:mobile_number]
       carer.password = params[:password]
       carer.save
-      redirect '/show'
+      redirect '/carer'
     end
   end
-
-post '/client' do
-
-end

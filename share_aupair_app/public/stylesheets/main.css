@@ -34,3 +34,6 @@ button {
 textarea {
   font-family: 'Orbitron', sans-serif;
 }
+ul:hover {
+  text-decoration: underline;
+}
