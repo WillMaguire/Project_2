@@ -6,4 +6,27 @@
   <a href="/sessions/new">LOG IN</a>
 <% end %>
 
-<!-- Make Profile page -->
+
+<div class="">Core info
+  <div>name<span><%=current_client.name%></span></div>
+  <div>email<span><%=current_client.email%></div>
+  <div>mobile number<span><%=current_client.mobile_number%></div>
+  <img src= "<%=current_client.img_url%>"/>
+</div>
+
+<div class="">
+  <div>street address<span><%=current_client.street_address%></div>
+  <div>suburb</div>
+  <div>bio<span><%=current_client.bio%></div>
+  <div>host<span><%=current_client.host%></div>
+</div>
+
+<div>children<%=current_client.children%>
+  <ul>0 - 1<%=current_client.children_age_0to1%></ul>
+  <ul>2 - 3<%=current_client.children_age_2to3%></ul>
+  <ul>4 - 5<%=current_client.children_age_4to5%></ul>
+  <ul>6 - 8<%=current_client.children_age_6to8%></ul>
+  <ul>9 - 12<%=current_client.children_age_9to12%></ul>
+  <ul>12+<%=current_client.children_age_12plus%></ul>
+</div>
+<a href="/client_edit">Edit</a>

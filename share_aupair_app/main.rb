@@ -12,7 +12,7 @@ enable :sessions
 helpers do
 
   def current_client
-    Client.find_by(id: session[:user_id])
+    Client.find_by(id: session[:client_id])
   end
 
   def client_logged_in?
@@ -20,13 +20,12 @@ helpers do
   end
 
   def current_carer
-    Carer.find_by(id: session[:user_id])
+    Carer.find_by(id: session[:carer_id])
   end
 
   def carer_logged_in?
      !!current_carer #double negative = positve
   end
-
 end
 
 def run_sql(sql)
@@ -42,7 +41,7 @@ get '/' do
   erb :index
 end
 
-get  '/session/new' do
+get '/session/new' do
   erb :login
 end
 
@@ -50,14 +49,26 @@ get '/show' do
 
 end
 
+get '/client' do
+  erb :client
+end
+
+
 post '/show' do
   if
-    client_logged_in? == true
+    client_logged_in?
     erb :client
-    if carer_logged_in? == true
+  if carer_logged_in?
       erb :carer
     end
   end
+end
+
+delete '/session' do
+  session[:client_id] = nil
+  session[:carer_id] = nil
+  redirect '/'
+end
 
 post '/session/new' do
   user = Client.find_by(email: params[:email])
@@ -66,8 +77,12 @@ post '/session/new' do
   end
   if user && user.authenticate(params[:password])
     #create a session for you
-    session[:user_id] = user.id
+    if user.class.to_s == "Client"
+    session[:client_id] = user.id
+  else session[:carer_id] = user.id
     redirect '/show'
+  end
+
   else
     #get off my lawn! -- who are you?
     erb :login
@@ -75,7 +90,7 @@ post '/session/new' do
 end
 
 get '/signup' do
-   erb :signup
+  erb :signup
 end
 
 get '/signup/signup_client' do
@@ -83,13 +98,26 @@ get '/signup/signup_client' do
 end
 
 post '/signup/signup_client' do
-  client = Client.new
-  client.name = params[:name]
-  client.email = params[:email]
-  client.mobile_number = params[:mobile_number]
-  client.password = params[:password]
-  # client.password_digest #
-  client.save
+  if session[:client_id] || session[:carer_id]  == true
+    redirect '/show'
+    else
+      client = Client.new
+      client.name = params[:name]
+      client.email = params[:email]
+      client.mobile_number = params[:mobile_number]
+      client.password = params[:password]
+      # client.password_digest #
+      client.save
+      redirect '/show'
+  end
+end
+
+get '/cliet_edit' do
+  erb :cliet_edit
+end
+
+post 'client_edit' do
+  
 end
 
 get '/signup/signup_carer' do
@@ -97,16 +125,19 @@ get '/signup/signup_carer' do
 end
 
 post '/signup/signup_carer' do
-  carer = Carer.new
-  carer.name = params[:name]
-  carer.email = params[:email]
-  carer.mobile_number = params[:mobile_number]
-  carer.password = params[:password]
-  carer.password_digest
-  carer.save
-end
+  if session[:client_id] || session[:carer_id] == true
+    redirect '/show'
+    else
+      carer = Carer.new
+      carer.name = params[:name]
+      carer.email = params[:email]
+      carer.mobile_number = params[:mobile_number]
+      carer.password = params[:password]
+      carer.save
+      redirect '/show'
+    end
+  end
 
 post '/client' do
 
-end
 end

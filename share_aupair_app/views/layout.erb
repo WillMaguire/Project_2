@@ -7,7 +7,28 @@
 </head>
 <body>
   <h1>ShareAupair</h1>
-  <h2>Tinder for Toddlers</h2>
+  <h2>Childcare the works for you</h2>
+
+  <% if client_logged_in?%>
+    LOGGED IN AS <%=current_client.email%>
+
+      <form class="" action="/session" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button>LOG OUT</button>
+      </form>
+    <%end%>
+
+  <% if carer_logged_in?%>
+    LOGGED IN AS <%=current_carer.email%>
+
+      <form class="" action="/session" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button>LOG OUT</button>
+      </form>
+    <%end%>
+
+  session: <%= session[:client_id] || session[:carer_id]%>
+
   <%= yield %>
 
 </body>
