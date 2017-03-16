@@ -70,6 +70,8 @@ end
 post '/client' do
   if Location.where(suburb: params[:aupair_search].upcase).exists?
     Carer.find_by(suburb: params[:aupair_search]).foreach(:name) { |line| puts line }
+
+    erb :show
   end
 end
 
