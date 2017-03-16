@@ -12,17 +12,17 @@ Core info
     <label>street address</label><input name="street_address"type="text" value="<%=@carer.street_address %>"/>
     <label>Suburb</label><input name="suburb"type="text" value="<%=@carer.suburb %>"/>
     <label>Bio</label><input name="bio"type="text" value="<%=@carer.bio %>"/>
-    <label>host</label><input name="host"type="checkbox" value="<%=@carer.host %>"/>
+    <label>blue card</label><input name="blue_card"type="checkbox" value="<%=@carer.host %>"/>
 </div>
 
-<label>children</label><input name="children" type="text" value="<%=@carer.children %>"/>
-  Age Groups
+<div>
+  Age Groups Covered
   <ul>0 - 1<input name="children_age_0to1"type="checkbox" value="<%=@carer.children_age_0to1%>"/></ul>
   <ul>2 - 3<input name="children_age_2to3"type="checkbox" value="<%=@carer.children_age_2to3%>"/></ul>
   <ul>4 - 5<input name="children_age_4to5"type="checkbox" value="<%=@carer.children_age_4to5%>"/></ul>
   <ul>6 - 8<input name="children_age_6to8"type="checkbox" value="<%=@carer.children_age_6to8%>"/></ul>
   <ul>9 - 12<input name="children_age_9to11"type="checkbox" value="<%=@carer.children_age_9to11%>"/></ul>
   <ul>12+<input name="children_age_12plus"type="checkbox" value="<%=@carer.children_age_12plus%>"/></ul>
-
+</div>
   <button>EDIT</button>
 </form>

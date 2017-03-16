@@ -117,15 +117,15 @@ post '/client_edit' do
   if Location.where(suburb: params[:suburb].upcase).exists?
     client.suburb = params[:suburb]
   end
+  binding.pry
   client.img_url = params[:img_url]
   client.bio = params[:bio]
   client.host = params[:host].to_i
   client.children = params[:children]
   client.children_age_0to1 = params[:children_age_0to1].to_i
   client.children_age_2to3 = params[:children_age_2to3].to_i
-  client.children_age_4to5 = params[:children_age_4to5].to_i
-  client.children_age_6to8 = params[:children_age_6to8].to_i
-  client.children_age_9to12 = params[:children_age_9to12].to_i
+  client.children_age_4to5 = params[:children_age_4to5].to_i client.children_age_6to8 = params[:children_age_6to8].to_i
+  client.children_age_9to11 = params[:children_age_9to11].to_i
   client.children_age_12plus = params[:children_age_12plus].to_i
   client.save
    redirect '/client'
@@ -148,3 +148,28 @@ post '/signup/signup_carer' do
       redirect '/carer'
     end
   end
+
+get '/carer_edit' do
+  @carer = current_carer
+  erb :carer_edit
+end
+
+post '/carer_edit' do
+  carer = current_carer
+  carer.name = params[:name]
+  carer.email = params[:email]
+  carer.mobile_number = params[:mobile_number]
+  if Location.where(suburb: params[:suburb].upcase).exists?
+    carer.suburb = params[:suburb]
+  end
+  carer.img_url = params[:img_url]
+  carer.bio = params[:bio]
+  carer.blue_card = params[:blue_card].to_i
+  carer.children_age_0to1 = params[:children_age_0to1].to_i
+  carer.children_age_2to3 = params[:children_age_2to3].to_i
+  carer.children_age_4to5 = params[:children_age_4to5].to_i carer.children_age_6to8 = params[:children_age_6to8].to_i
+  carer.children_age_9to11 = params[:children_age_9to11].to_i
+  carer.children_age_12plus = params[:children_age_12plus].to_i
+  carer.save
+   redirect '/carer'
+end

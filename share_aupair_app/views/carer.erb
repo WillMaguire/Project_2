@@ -16,6 +16,8 @@
 <div class="">
   <div>street address<span><%=current_carer.street_address%></div>
   <div>suburb</div>
+    <div>postcode<span><%=current_client.postcode%></div>
+    <div>region<span><%=current_client.region%></div>
   <div>bio<span><%=current_carer.bio%></div>
   <div>blue card<span><%=current_carer.blue_card%></div>
 </div>
@@ -27,4 +29,5 @@
   <ul>6 - 8<%=current_carer.children_age_6to8%></ul>
   <ul>9 - 12<%=current_carer.children_age_9to11%></ul>
   <ul>12+<%=current_carer.children_age_12plus%></ul>
+  <a href="/carer_edit">Edit</a>
 </div>
