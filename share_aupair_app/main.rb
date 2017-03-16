@@ -26,6 +26,14 @@ helpers do
   def carer_logged_in?
      !!current_carer #double negative = positve
   end
+
+  def checkbox_return(x)
+    if x == '1'
+      return false
+    else
+      return true
+    end
+  end
 end
 
 def run_sql(sql)
@@ -53,6 +61,16 @@ end
 get '/client' do
   # return current_client.to_json
   erb :client
+end
+
+get '/about' do
+  erb :about
+end
+
+post '/client' do
+  if Location.where(suburb: params[:aupair_search].upcase).exists?
+    Carer.find_by(suburb: params[:aupair_search]).foreach(:name) { |line| puts line }
+  end
 end
 
 
@@ -114,19 +132,23 @@ post '/client_edit' do
   client.name = params[:name]
   client.email = params[:email]
   client.mobile_number = params[:mobile_number]
+  client.street_address = params[:street_address]
   if Location.where(suburb: params[:suburb].upcase).exists?
-    client.suburb = params[:suburb]
+      client.suburb = params[:suburb]
+    if Location.where(postcode: params[:postcode].to_i).exists?
+      client.postcode = params[:postcode]
+    end
   end
-  binding.pry
   client.img_url = params[:img_url]
   client.bio = params[:bio]
-  client.host = params[:host].to_i
+  client.host = checkbox_return(params[:host])
   client.children = params[:children]
-  client.children_age_0to1 = params[:children_age_0to1].to_i
-  client.children_age_2to3 = params[:children_age_2to3].to_i
-  client.children_age_4to5 = params[:children_age_4to5].to_i client.children_age_6to8 = params[:children_age_6to8].to_i
-  client.children_age_9to11 = params[:children_age_9to11].to_i
-  client.children_age_12plus = params[:children_age_12plus].to_i
+  client.children_age_0to1 = checkbox_return(params[:children_age_0to1])
+  client.children_age_2to3 = checkbox_return(params[:children_age_2to3])
+  client.children_age_4to5 = checkbox_return(params[:children_age_4to5])
+  client.children_age_6to8 = checkbox_return(params[:children_age_6to8])
+  client.children_age_9to11 = checkbox_return(params[:children_age_9to11])
+  client.children_age_12plus = checkbox_return(params[:children_age_12plus])
   client.save
    redirect '/client'
 end
@@ -137,7 +159,7 @@ end
 
 post '/signup/signup_carer' do
   if session[:client_id] || session[:carer_id] == true
-    redirect '/show'
+    redirect '/'
     else
       carer = Carer.new
       carer.name = params[:name]
@@ -161,15 +183,19 @@ post '/carer_edit' do
   carer.mobile_number = params[:mobile_number]
   if Location.where(suburb: params[:suburb].upcase).exists?
     carer.suburb = params[:suburb]
+    if Location.where(postcode: params[:postcode].to_i).exists?
+      carer.postcode = params[:postcode]
+    end
   end
   carer.img_url = params[:img_url]
   carer.bio = params[:bio]
-  carer.blue_card = params[:blue_card].to_i
-  carer.children_age_0to1 = params[:children_age_0to1].to_i
-  carer.children_age_2to3 = params[:children_age_2to3].to_i
-  carer.children_age_4to5 = params[:children_age_4to5].to_i carer.children_age_6to8 = params[:children_age_6to8].to_i
-  carer.children_age_9to11 = params[:children_age_9to11].to_i
-  carer.children_age_12plus = params[:children_age_12plus].to_i
+  carer.blue_card = checkbox_return(params[:blue_card])
+  carer.children_age_0to1 = checkbox_return(params[:children_age_0to1])
+  carer.children_age_2to3 = checkbox_return(params[:children_age_2to3])
+  carer.children_age_4to5 = checkbox_return(params[:children_age_4to5])
+  carer.children_age_6to8 = checkbox_return(params[:children_age_6to8])
+  carer.children_age_9to11 = checkbox_return(params[:children_age_9to11])
+  carer.children_age_12plus = checkbox_return(params[:children_age_12plus])
   carer.save
    redirect '/carer'
 end

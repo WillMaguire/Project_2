@@ -1,33 +1,29 @@
-<h2>
-  Carer
-</h2>
 
 <% if !carer_logged_in? %>
   <a href="/sessions/new">LOG IN</a>
 <% end %>
 
-<div class="">Core info
-  <div>name <span><%=current_carer.name%></span></div>
-  <div>email <span><%=current_carer.email%></div>
-  <div>mobile number <span><%=current_carer.mobile_number%></div>
+<div class="core_info">
+  <div>name: <span><%=current_carer.name%></span></div>
+  <div>email: <span><%=current_carer.email%></div>
+  <div>mobile number: <span><%=current_carer.mobile_number%></div>
   <img src= "<%=current_carer.img_url%>"/>
 </div>
 
-<div class="">
-  <div>street address<span><%=current_carer.street_address%></div>
-  <div>suburb</div>
-    <div>postcode<span><%=current_client.postcode%></div>
-    <div>region<span><%=current_client.region%></div>
-  <div>bio<span><%=current_carer.bio%></div>
-  <div>blue card<span><%=current_carer.blue_card%></div>
+<div class="secondary_info">
+  <div>street address: <span><%=current_carer.street_address%></div>
+  <div>suburb: <span><%=current_carer.suburb%></div>
+  <div>postcode: <span><%=current_carer.postcode%></div>
+  <div>about me: <span><%=current_carer.bio%></div>
+  <div>blue card: <span><%=current_carer.blue_card%></div>
 </div>
 
-<div>children worked with
-  <ul>0 - 1<%=current_carer.children_age_0to1%></ul>
-  <ul>2 - 3<%=current_carer.children_age_2to3%></ul>
-  <ul>4 - 5<%=current_carer.children_age_4to5%></ul>
-  <ul>6 - 8<%=current_carer.children_age_6to8%></ul>
-  <ul>9 - 12<%=current_carer.children_age_9to11%></ul>
-  <ul>12+<%=current_carer.children_age_12plus%></ul>
-  <a href="/carer_edit">Edit</a>
+<div class="child_info">
+  Children worked with:
+  <ul>0 - 1 <%=current_carer.children_age_0to1%></ul>
+  <ul>2 - 3 <%=current_carer.children_age_2to3%></ul>
+  <ul>4 - 5 <%=current_carer.children_age_4to5%></ul>
+  <ul>6 - 8 <%=current_carer.children_age_6to8%></ul>
+  <ul>9 - 12 <%=current_carer.children_age_9to11%></ul>
+  <ul>12+ <%=current_carer.children_age_12plus%></ul>
 </div>

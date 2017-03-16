@@ -4,33 +4,54 @@
   <meta charset="UTF-8">
   <title>Share Au Pair</title>
   <link rel='stylesheet' href='/stylesheets/main.css'>
+  <link rel="stylesheet" href="/css/reset.css">
 </head>
 <body>
-  <h1>ShareAupair</h1>
-  <h2>Childcare the works for you</h2>
+<div id="header">
+      <li id="header_1">ShareAupair</li>
+      <li id="header_2">Childcare that works for you</li>
+    </div>
 
   <% if client_logged_in?%>
-    LOGGED IN AS <%=current_client.name%>
+    <div class="loggedin">
+    Logged in as <%=current_client.name%>
+      <br>
       <a href="/client">Profile</a>
-      <a href="/">Home</a>
+      <br>
+      <a href="/client_edit">Edit</a>
       <form class="" action="/session" method="post">
         <input type="hidden" name="_method" value="delete">
-        <button>LOG OUT</button>
+        <button>Log Out</button>
       </form>
+      session: <%= session[:client_id] || session[:carer_id]%>
+    </div>
     <%end%>
 
   <% if carer_logged_in?%>
-    LOGGED IN AS <%=current_carer.name%>
+  <div class="loggedin">
+    Logged in as <%=current_carer.name%>
+      <br>
       <a href="/carer">Profile</a>
-      <a href="/">Home</a>
+      <br>
+      <a href="/carer_edit">Edit</a>
       <form class="" action="/session" method="post">
         <input type="hidden" name="_method" value="delete">
-        <button>LOG OUT</button>
+
+        <button>Log Out</button>
       </form>
+      session: <%= session[:client_id] || session[:carer_id]%>
+    </div>
     <%end%>
 
-  session: <%= session[:client_id] || session[:carer_id]%>
 
+    <div id="navbar">
+      <nav id="nav-bar">
+          <a class="nav_box" href="/">Home</a>
+          <a class="nav_box" href="/about">About Us</a>
+          <a class="nav_box" href="/session/new">Log In</a>
+          <a class="nav_box" href="/signup">Sign Up</a>
+      </nav>
+    </div>
   <%= yield %>
 
 </body>
