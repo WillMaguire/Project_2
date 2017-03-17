@@ -21,56 +21,55 @@ View contact details of carers and parents in their area
 
 User Workflow
 
-With the core features, i also came up with a simple workflow to determine the types of web pages i would need. Untitled_Diagram
+User interaction is designed to be very simple and direct: users are greeted by a reactive navigation bar that directs them to an Abot Page(unfinished at deployment), a sign in portal or a sign up portal.
 
-Sinatra Paths
+The sign in portal accepts an email and password an directs the user to their profile page(cleint or carer)
 
-I proceed to draft out the sinatra paths of the web pages.
+The sign up portal offers a choice between signing up as a client or as a carer: the sign up portal accepts a name, email, mobile number and passsword. Once accepted the portal rediects to the respective Profile page
 
-
-Finally i drafted a simple layout that will be used for all the pages in the web app. fantasy_not_signed_in
-online uploader
-fantasy_logged_in
-
+On the profile page users are able to select the 'Edit" option and will be directed to an edit page which allows them to fill a variety of fields including street address, postcode, suburb, children, age of children(indicated by a checkbox defined range) as well as a biography and a checkbox indicating their interest in hosting childcare creches at their home(for future features)
 
 Technologies Used
 
 Front End
 
-HTML,CSS,Bootstrap library for majority of presentation, layout.
-Some javascript and jquery to handle dynamic changes in presentation data to user.
+HTML,CSS,
+
 Back End
 
-
-
-Ruby
-Gem Used	Used For
-Sinatra	Web Framework
-Bcrypt	Encrypt password and authenticate
-Httparty	connect to API and retrieve data
-ActiveRecord	access to database and provide ORM platform
+Ruby: Gems Used
+  Sinatra -	Web Framework
+  Bcrypt -	Encrypt password and authenticate
+  ActiveRecord -	access to database and provide ORM platform
+  
+  
 Database
 
 PostgreSQL
 Installation
 
-I packaged my web app using the bundle install command which installs all the gems required for my app and bundled it as a whole.Then i deployed the app to heroku by creating a heroku app from console then pushed my bundled app to the heroku container. I proceeded to create my tables by inserting SQL commands from the heroku PG:PSQL command. Finally the app is then online and available for end users.
+The web app was packaged using the bundler; it was then deployed to heroku. Tables were dumped from my local database and used to overwrite the existing heroku tables. The app went online and is available to end users.
 
 Unsolved Problems / Incomplete Features
 
-Haven't completed javascript feature to calculate bet returns (stake amount * odds) and display to user.
+Haven't touched javascript features;these will focus primarily on social media APIs, Google Map in app navigation integration, adding dynamic education resource content and adding a more reactive GUI(replace checkboxes,etc).
 Haven't completed password change in main.rb
-Lack of client and server side form data validations
-Haven't found a free-to-use sportsbet API that delivers game schedules, odds and results.
-Therefore not able to determine the Game outcome and subsequently bet outcomes.
+Lack of meanigful client and server side data validations; although some exist for location matching they are rudimentry. 
+Client to Client searching is not active; 'get' and 'post' requests needed in main.rb.
+Location matching is not extensive enough: the planned priority based listing system is yet to be coded.
+Auto-complete of postcodes, suburbs and regions usind "Locations" SQL is yet to be implemented.
+Further CSS styling and images to be added to front end, including .
+Facbook login to be added.
+
 "Ideal" Features
 
-Create "League" class which will be able to categorize games into "Real Games" and "Fantasy League"
-Create "Teams" class which will have "Real Teams" and "Fantasy Teams"
-Create "Players" class which will have active players in the league and retired players that will contain attributes and statlines
-Add simulating feature which will simulate matches at a set interval where "users" can bet on games where simulation has not run yet.
+Create comprehensive education resource database including offsite links and partners(database to be hosted)
+Create comprehensive client/client and client/carer location based matching system including matching by desired education outcoms, child ages, ability to host, daily travel pathing, budget, etc...(API TBD)
+Integreated realtime calander based availability matching(API TBD).
+More features as project budget develops.
+
 Project Live Link
 
-https://thawing-crag-52192.herokuapp.com/
+https://whispering-dusk-12663.herokuapp.com/
 Contact GitHub API Training Shop Blog About
 © 2017 GitHub, Inc. Terms Privacy Security Status Help
