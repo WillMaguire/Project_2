@@ -3,22 +3,24 @@
 
 
 <div class="core_info">
-  <label>name: </label><input name="name"type="text" value="<%=@client.name %>"/>
-    <label>email: </label><input name="email"type="text" value="<%=@client.email%>"/>
-    <label>mobile number: </label><input name="mobile_number"type="text" value="<%=@client.mobile_number %>"/>
-  <label>profile picture: </label><input name="img_url"type="url" value="<%=@client.img_url %>"/>
+<li><label>name: </label></li><li><input name="name"type="text" value="<%=@client.name %>"/></li>
+    <li><label>email: </label></li><li><input name="email"type="text" value="<%=@client.email%>"/></li>
+    <li><label>mobile number: </label></li><li><input name="mobile_number"type="text" value="<%=@client.mobile_number %>"/></li>
+  <li><label>profile picture: </label></li><li><input name="img_url"type="url" value="<%=@client.img_url %>"/></li>
 </div>
 
 <div class="secondary_info">
-    <label>street address: </label><input name="street_address"type="text" value="<%=@client.street_address %>"/>
-    <label>suburb: </label><input name="suburb"type="text" value="<%=@client.suburb %>"/>
-    <label>postcode: </label><input name="postcode"type="text" value="<%=@client.postcode %>"/>
-    <label>about me: </label><input name="bio"type="text" value="<%=@client.bio %>"/>
+    <li><label>street address: </label></li><li><input name="street_address"type="text" value="<%=@client.street_address %>"/></li>
+    <li><label>suburb: </label></li><li><input name="suburb"type="text" value="<%=@client.suburb %>"/></li>
+    <li><label>postcode: </label></li><li><input name="postcode"type="text" value="<%=@client.postcode %>"/></li>
+    <li><label>about me: </label></li><li><input name="bio"type="text" value="<%=@client.bio %>"/></li>
     <label>host: </label><input name="host"type="checkbox" value="<%=@client.host %>"/>
 </div>
 <div class="child_info">
 <label>children: </label><input name="children" type="text" value="<%=@client.children %>"/>
-  age group
+  <br>
+  <label>age group</label>
+  <br>
   <ul>0 - 1<input name="children_age_0to1"type="checkbox" value="<%=@client.children_age_0to1%>"/></ul>
   <ul>2 - 3<input name="children_age_2to3"type="checkbox" value="<%=@client.children_age_2to3%>"/></ul>
   <ul>4 - 5<input name="children_age_4to5"type="checkbox" value="<%=@client.children_age_4to5%>"/></ul>

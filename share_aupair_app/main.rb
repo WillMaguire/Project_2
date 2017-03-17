@@ -28,12 +28,13 @@ helpers do
   end
 
   def checkbox_return(x)
-    if x == '1'
-      return false
-    else
+    if x == "true"
       return true
+    else
+      return false
     end
   end
+
 end
 
 def run_sql(sql)
@@ -69,9 +70,10 @@ end
 
 post '/client' do
   if Location.where(suburb: params[:aupair_search].upcase).exists?
-    Carer.find_by(suburb: params[:aupair_search]).foreach(:name) { |line| puts line }
-
-    erb :show
+      @results = Carer.where(suburb: params[:aupair_search])
+# binding.pry
+      erb :show
+    # do I need Location here at all?
   end
 end
 
@@ -121,6 +123,7 @@ post '/signup/signup_client' do
     client.password = params[:password]
     # client.password_digest #
     client.save
+    session[:client_id] = client.id
     redirect '/client'
 end
 
@@ -169,6 +172,7 @@ post '/signup/signup_carer' do
       carer.mobile_number = params[:mobile_number]
       carer.password = params[:password]
       carer.save
+      session[:carer_id] = carer.id
       redirect '/carer'
     end
   end
@@ -183,6 +187,7 @@ post '/carer_edit' do
   carer.name = params[:name]
   carer.email = params[:email]
   carer.mobile_number = params[:mobile_number]
+  carer.street_address = params[:street_address]
   if Location.where(suburb: params[:suburb].upcase).exists?
     carer.suburb = params[:suburb]
     if Location.where(postcode: params[:postcode].to_i).exists?
@@ -190,6 +195,7 @@ post '/carer_edit' do
     end
   end
   carer.img_url = params[:img_url]
+  carer.age = params[:age]
   carer.bio = params[:bio]
   carer.blue_card = checkbox_return(params[:blue_card])
   carer.children_age_0to1 = checkbox_return(params[:children_age_0to1])
@@ -198,6 +204,10 @@ post '/carer_edit' do
   carer.children_age_6to8 = checkbox_return(params[:children_age_6to8])
   carer.children_age_9to11 = checkbox_return(params[:children_age_9to11])
   carer.children_age_12plus = checkbox_return(params[:children_age_12plus])
-  carer.save
+  if carer.save
+
    redirect '/carer'
+
+ end
+
 end

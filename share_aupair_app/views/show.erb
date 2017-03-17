@@ -1,9 +1,21 @@
 <div class="results">
+<% @results.each do |result| %>
 <div>
-  <%= sdkjfbsh %>
+  <%= result["name"]%>
 </div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
+<div>
+  <%= result["email"] %>
+</div>
+<div>
+  <%= result["suburb"] %>
+</div>
+<div>
+  <%= result["bio"] %>
+</div>
+<div>
+  <%= result["street_address"] %>
+</div>
+<hr>
+<%end%>
+
 </div>

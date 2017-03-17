@@ -98,12 +98,26 @@ ul:hover {
 }
 .login {
   padding-top: 3em;
-  font-size: 16pt;
+  font-size: 14pt;
+  display: block;
+  list-style: none;
 }
 .loggedin {
   float: right;
 }
 .core_info {
   margin: 0 auto;
+  list-style: none;
 }
-.search_info
+.secondary_info {
+  list-style: none;
+}
+.search_info {
+  list-style: none;
+}
+.results {
+  height: 100%;
+  margin: 0 auto;
+  width: inherit;
+  font-size: 16pt;
+}

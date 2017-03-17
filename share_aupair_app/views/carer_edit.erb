@@ -2,21 +2,23 @@
 
 
 <div class="core_info">
-  <label>name: </label><input name="name"type="text" value="<%=@carer.name %>"/>
-    <label>email: </label><input name="email"type="text" value="<%=@carer.email%>"/>
-    <label>mobile number: </label><input name="mobile_number"type="text" value="<%=@carer.mobile_number %>"/>
-  <label>profile picture: </label><input name="img_url"type="url" value="<%=@carer.img_url %>"/>
+</li><label>name: </label></li><li><input name="name"type="text" value="<%=@carer.name %>"/></li>
+    </li><label>email: </label></li><li><input name="email"type="text" value="<%=@carer.email%>"/></li>
+    <li><label>mobile number: </label></li><li><input name="mobile_number"type="text" value="<%=@carer.mobile_number %>"/></li>
+  <li><label>profile picture: </label></li><li><input name="img_url"type="url" value="<%=@carer.img_url %>"/></li>
 </div>
 
 <div class="secondary_info">
-    <label>street address: </label><input name="street_address"type="text" value="<%=@carer.street_address %>"/>
-    <label>suburb: </label><input name="suburb"type="text" value="<%=@carer.suburb %>"/>
-    <label>about me: </label><input name="bio"type="text" value="<%=@carer.bio %>"/>
-    <label>blue card: </label><input name="blue_card"type="checkbox" value="<%=@carer.blue_card %>"/>
+    <li><label>street address: </label></li><li><input name="street_address"type="text" value="<%=@carer.street_address %>"/></li>
+    <li><label>suburb: </label></li><li><input name="suburb"type="text" value="<%=@carer.suburb %>"/></li>
+    <li><label>post code: </label></li><li><input name="postcode"type="text" value="<%=@carer.postcode %>"/></li>
+    <li><label>about me: </label></li><li><input name="bio"type="text" value="<%=@carer.bio %>"/></li>
+  <label>blue card: </label><input name="blue_card"type="checkbox" value="<%=@carer.blue_card %>"/>
 </div>
 
 <div class="child_info">
-  age groups covered
+  <br>
+  <label>children worked with:</label>
   <ul>0 - 1<input name="children_age_0to1"type="checkbox" value="<%=@carer.children_age_0to1%>"/></ul>
   <ul>2 - 3<input name="children_age_2to3"type="checkbox" value="<%=@carer.children_age_2to3%>"/></ul>
   <ul>4 - 5<input name="children_age_4to5"type="checkbox" value="<%=@carer.children_age_4to5%>"/></ul>
