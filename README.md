@@ -53,19 +53,29 @@ The web app was packaged using the bundler; it was then deployed to heroku. Tabl
 Unsolved Problems / Incomplete Features
 
 Haven't touched javascript features;these will focus primarily on social media APIs, Google Map in app navigation integration, adding dynamic education resource content and adding a more reactive GUI(replace checkboxes,etc).
+
 Haven't completed password change in main.rb
+
 Lack of meanigful client and server side data validations; although some exist for location matching they are rudimentry. 
+
 Client to Client searching is not active; 'get' and 'post' requests needed in main.rb.
+
 Location matching is not extensive enough: the planned priority based listing system is yet to be coded.
+
 Auto-complete of postcodes, suburbs and regions usind "Locations" SQL is yet to be implemented.
+
 Further CSS styling and images to be added to front end, including .
-Facbook login to be added.
+
+Facbook login API to be added.
 
 "Ideal" Features
 
 Create comprehensive education resource database including offsite links and partners(database to be hosted)
-Create comprehensive client/client and client/carer location based matching system including matching by desired education outcoms, child ages, ability to host, daily travel pathing, budget, etc...(API TBD)
+
+Create comprehensive client/client and client/carer location based matching system including matching by desired education outcoms, child ages, ability to host, daily travel pathing, budget and many more...(API TBD)
+
 Integreated realtime calander based availability matching(API TBD).
+
 More features as project budget develops.
 
 Project Live Link
