@@ -1,6 +1,6 @@
 require 'sinatra'
-require 'sinatra/reloader'
-require 'pry'
+# require 'sinatra/reloader'
+# require 'pry'
 require 'pg'
 require_relative 'database_config'
 require_relative 'models/carer'
@@ -71,7 +71,6 @@ end
 post '/client' do
   if Location.where(suburb: params[:aupair_search].upcase).exists?
       @results = Carer.where(suburb: params[:aupair_search])
-# binding.pry
       erb :show
     # do I need Location here at all?
   end
